@@ -3,7 +3,11 @@ namespace MyFirstMauiApp1;
 // This class represents an entire page (so far, I guess). Everything we want to appear on that page must be put here.
 public class TestPage : ContentPage
 {
-	// Like in any other class, we can put fields and properties and stuff outside any method. They will be executed when object is initialized.
+    // Like in any other class, we can put fields and properties and stuff outside any method. They will be executed when object is initialized.
+    int count = 0;
+
+    // Moved labelText declaration outside to be able to get to it in OnClickEvent method.
+    Label labelText;
 
 	public TestPage()
 	{
@@ -26,7 +30,7 @@ public class TestPage : ContentPage
         // Create a label. I am going to assume that label will be used for absolutely everything, like in TKinter, I call it now.
         // Trevoir says that it is a good practice to prefix variable name with what class it is, so it's easier to recognize it later.
         // It's fields will be initialized using object initializer syntax.
-        Label LabelText = new Label
+        labelText = new Label
         {
             // See documentation on what properties are available.
             // https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/label?view=net-maui-8.0
@@ -37,10 +41,33 @@ public class TestPage : ContentPage
         };
 
         // Add this label into the thing holder. 
-        stacklayout.Children.Add(LabelText);
+        stacklayout.Children.Add(labelText);
+
+        // Create button
+        Button buttonCounter = new Button
+        {
+            Text = "Press to count",
+            HorizontalOptions = LayoutOptions.Center
+        };
+
+        // Add this button to list of elements.
+        stacklayout.Children.Add(buttonCounter);
+
+        // Action to the button is attached after it's creation.
+        // We add to our own EventHandler, but I guess it makes sense, probably there's inherited OnClick method or something.
+        buttonCounter.Clicked += OnClickEvent;
 
         // Now place the View (containing thing with all the elements) as "what is in this page".
         // At his point, contents of the page, as they are now set, will be visible on screen.
         this.Content = stacklayout;
 	}
+
+    private void OnClickEvent(object? sender, EventArgs e)
+    {
+        count++;
+        labelText.Text = $"Jeff clicked {count} times!";
+
+        // This is for screen readers, let's them know that this text has changed.
+        SemanticScreenReader.Announce(labelText.Text);
+    }
 }
