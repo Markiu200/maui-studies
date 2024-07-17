@@ -68,6 +68,21 @@ public class TestPage : ContentPage
         };
         stacklayout.Children.Add(labelText2);
 
+        // Button to navigate to TestPage2
+        Button goToTestPage2Button = new Button
+        {
+            Text = "Go to TestPage2",
+        };
+        // Navigating to different page.
+        // https://learn.microsoft.com/en-us/dotnet/maui/xaml/fundamentals/get-started?view=net-maui-8.0
+        goToTestPage2Button.Clicked += async (sender, args) =>
+        {
+            // Calling new page constructor. This reinitializes entire page (counter and button text), which is why it's back to default every time.
+            await Navigation.PushAsync(new TestPage2());
+        };
+        stacklayout.Children.Add(goToTestPage2Button);
+
+
         // Now place the View (containing thing with all the elements) as "what is in this page".
         // At his point, contents of the page, as they are now set, will be visible on screen.
         this.Content = stacklayout;
