@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyFirstMauiApp1.TestPage3"
+             Title="TestPage3">
+    <ScrollView>
+        <VerticalStackLayout Margin="20, 20, 20, 20"
+                             Padding="10, 10, 10, 10">
+            <!-- Alternative for configuring element. Make element not self-closing and nest it's properties as separate items -->
+            <Label 
+                VerticalOptions="Center" 
+                HorizontalOptions="Center">
+                <Label.Text>Layouts example!</Label.Text>
+            </Label>
+            <Grid>
+                <!-- https://learn.microsoft.com/en-us/dotnet/maui/xaml/fundamentals/essential-syntax?view=net-maui-8.0 
+                Doing it this way allows for setting properties to more complex values.
+                Eg. RowDefinitions are of type RowDefinitionCollection, and you "populate" this collection by nesting
+                it's elements as RowDefinition elements. And then those will have their own properties.
+                -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" /> <!-- "Auto" will make this row as wide as it will be set in element itself -->
+                    <RowDefinition Height="*" /> <!-- "*" will take all remaining space -->
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!-- And when all of this is setup, you put actual things in the grid -->
+                <BoxView 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Color="CornflowerBlue"
+                    CornerRadius="10"
+                    WidthRequest="160"
+                    HeightRequest="160"/>
+                <BoxView 
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Color="IndianRed"
+                    CornerRadius="10"
+                    WidthRequest="160"
+                    HeightRequest="160"/>
+                <BoxView 
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Color="PaleGoldenrod"
+                    CornerRadius="10"
+                    WidthRequest="160"
+                    HeightRequest="160"/>
+                <BoxView 
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Color="DarkViolet"
+                    CornerRadius="10"
+                    WidthRequest="160"
+                    HeightRequest="160"/>
+                <BoxView 
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Color="Indigo"
+                    CornerRadius="10"
+                    WidthRequest="160"
+                    HeightRequest="160"/>
+                <BoxView 
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Color="Firebrick"
+                    CornerRadius="10"
+                    WidthRequest="160"
+                    HeightRequest="160"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
