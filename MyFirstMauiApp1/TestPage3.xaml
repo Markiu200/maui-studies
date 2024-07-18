@@ -5,13 +5,16 @@
              Title="TestPage3">
     <ScrollView>
         <VerticalStackLayout Margin="20, 20, 20, 20"
-                             Padding="10, 10, 10, 10">
+                             Padding="10, 10, 10, 10"
+                             HeightRequest="500">
             <!-- Alternative for configuring element. Make element not self-closing and nest it's properties as separate items -->
             <Label 
                 VerticalOptions="Center" 
-                HorizontalOptions="Center">
-                <Label.Text>Layouts example!</Label.Text>
+                HorizontalOptions="Center"
+                x:Name="labelLabel">
+                <Label.Text>Layout example</Label.Text>
             </Label>
+
             <Grid>
                 <!-- https://learn.microsoft.com/en-us/dotnet/maui/xaml/fundamentals/essential-syntax?view=net-maui-8.0 
                 Doing it this way allows for setting properties to more complex values.
@@ -24,7 +27,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="200" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <!-- And when all of this is setup, you put actual things in the grid -->
@@ -33,43 +36,45 @@
                     Grid.Column="0"
                     Color="CornflowerBlue"
                     CornerRadius="10"
-                    WidthRequest="160"
-                    HeightRequest="160"/>
+                    HeightRequest="100"
+                    WidthRequest="180" /> <!-- Width of 180 in allocated 200 for column=0 -->
+                <!-- Note that WidthRequest and HeightRequest is "measured in device-independent units."
+                https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/boxview?view=net-maui-8.0-->
                 <BoxView 
                     Grid.Row="0"
                     Grid.Column="1"
                     Color="IndianRed"
                     CornerRadius="10"
-                    WidthRequest="160"
-                    HeightRequest="160"/>
+                    HeightRequest="150" 
+                    WidthRequest="100" /> <!-- Different height requests for same row of height=auto. here width=* -->
                 <BoxView 
                     Grid.Row="1"
                     Grid.Column="0"
                     Color="PaleGoldenrod"
                     CornerRadius="10"
-                    WidthRequest="160"
-                    HeightRequest="160"/>
+                    HeightRequest="100"
+                    WidthRequest="200"/> <!-- Height set for height=* -->
                 <BoxView 
                     Grid.Row="1"
                     Grid.Column="1"
                     Color="DarkViolet"
                     CornerRadius="10"
-                    WidthRequest="160"
-                    HeightRequest="160"/>
+                    HeightRequest="100"
+                    WidthRequest="100"/>
                 <BoxView 
                     Grid.Row="2"
                     Grid.Column="0"
                     Color="Indigo"
                     CornerRadius="10"
-                    WidthRequest="160"
-                    HeightRequest="160"/>
+                    HeightRequest="100"
+                    WidthRequest="200"/>
                 <BoxView 
                     Grid.Row="2"
                     Grid.Column="1"
                     Color="Firebrick"
                     CornerRadius="10"
-                    WidthRequest="160"
-                    HeightRequest="160"/>
+                    HeightRequest="100"
+                    WidthRequest="100"/>
             </Grid>
         </VerticalStackLayout>
     </ScrollView>
