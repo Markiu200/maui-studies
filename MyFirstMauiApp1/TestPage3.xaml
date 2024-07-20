@@ -4,9 +4,12 @@
     xmlns:<namespace> just defines the namespace (is pure XAML at least) 
     https://www.w3schools.com/xml/xml_namespaces.asp
     -->
+<!-- xmlns:resources="clr-namespace:MyFirstMauiApp1.Resources" 
+    including namespace for "shared resources" lesson -->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mySizes="clr-namespace:MyFirstMauiApp1"
+             xmlns:resources="clr-namespace:MyFirstMauiApp1.Resources"
              x:Class="MyFirstMauiApp1.TestPage3"
              Title="TestPage3">
     <ScrollView>
@@ -15,10 +18,18 @@
                              HeightRequest="500"
                              BackgroundColor="{OnPlatform Android=Beige, WinUI=Green, Default=Firebrick}">
             <!-- Alternative for configuring element. Make element not self-closing and nest it's properties as separate items -->
+            <!-- x:Static   - so XAML knows it's taking something from static... 
+                Member      - ...member...
+                =resources:SharedResources.FntColor     - ...from XAML namespace "resources" (defined as MyFirstMauiApp1.Resources), 
+                                                        from SharedResources class FntColor public member.
+            -->
             <Label 
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
-                x:Name="labelLabel">
+                x:Name="labelLabel"
+                FontAttributes="Bold"
+                TextColor="{x:Static Member=resources:SharedResources.FntColor}"
+                >
                 <Label.Text>Layout example</Label.Text>
             </Label>
 
