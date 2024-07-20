@@ -15,7 +15,20 @@
             <Label Text="Flyout bit!" HorizontalTextAlignment="Center"></Label>
         </VerticalStackLayout>
     </Shell.FlyoutHeader>
-    
+
+    <!-- ItemTemplate allows for adjusting how should flyout items look like -->
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="*,30">
+                <Label Text="{Binding Title}" VerticalOptions="Center" Padding="30,20"></Label>
+                    <!-- YT guy user "LayoutIcon", however it works with Icon too, 
+                    and if I imagine what "Binding" does right, it should be the proper way to go-->
+                <Image Source="{Binding Icon}" HeightRequest="50" HorizontalOptions="End"></Image>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <!-- <FlyoutItem FlyoutDisplayOptions="AsMultipleItems"> -->
     <ShellContent
         Title="TestPage"
         Icon="dotnet_bot.png"
@@ -41,7 +54,8 @@
         Icon="dotnet_bot.png"
         ContentTemplate="{DataTemplate local:TestPage3_CS}"
         Route="TestPage3_CS" />
-
+    <!--</FlyoutItem> -->
+    
     <Shell.FlyoutFooter>
         <VerticalStackLayout>
             <Image Source="dotnet_bot.png"></Image>
@@ -65,6 +79,7 @@
     
     https://learn.microsoft.com/en-us/answers/questions/1376316/unable-to-get-tab-bar-and-flyout-together-in-the-s
     You cannot have both Flyout and TabBar. it's one or another, at least in Shell.
+    If you set it for both, TabBar and Flybar will have same elements, they will repeat. They will still be functional though.
     
     Turns out "Shell" is an XAML file just like is Page ones. It's just here you define "navigation" part.
 -->
