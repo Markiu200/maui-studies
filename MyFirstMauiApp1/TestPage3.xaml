@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!-- "xmlns:mySize1="clr-namespace:MyFirstMauiApp1" 
+    Refers to defined in C# namespace, from where we will be able to fetch constant. 
+    xmlns:<namespace> just defines the namespace (is pure XAML at least) 
+    https://www.w3schools.com/xml/xml_namespaces.asp
+    -->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mySizes="clr-namespace:MyFirstMauiApp1"
              x:Class="MyFirstMauiApp1.TestPage3"
              Title="TestPage3">
     <ScrollView>
@@ -47,34 +53,35 @@
                     CornerRadius="10"
                     HeightRequest="150" 
                     WidthRequest="100" /> <!-- Different height requests for same row of height=auto. here width=* -->
+                <!-- Global Markup Values below -->
                 <BoxView 
                     Grid.Row="1"
                     Grid.Column="0"
                     Color="PaleGoldenrod"
                     CornerRadius="10"
-                    HeightRequest="100"
-                    WidthRequest="200"/> <!-- Height set for height=* -->
+                    HeightRequest="{mySizes:GlobalConstSize}"
+                    WidthRequest="{mySizes:GlobalSecondConstSize}"/> <!-- Height set for height=* -->
                 <BoxView 
                     Grid.Row="1"
                     Grid.Column="1"
                     Color="DarkViolet"
                     CornerRadius="10"
-                    HeightRequest="100"
-                    WidthRequest="100"/>
+                    HeightRequest="{mySizes:GlobalConstSize}"
+                    WidthRequest="{mySizes:GlobalConstSize}"/>
                 <BoxView 
                     Grid.Row="2"
                     Grid.Column="0"
                     Color="Indigo"
                     CornerRadius="10"
-                    HeightRequest="100"
-                    WidthRequest="200"/>
+                    HeightRequest="{mySizes:GlobalConstSize}"
+                    WidthRequest="{mySizes:GlobalSecondConstSize}"/>
                 <BoxView 
                     Grid.Row="2"
                     Grid.Column="1"
                     Color="Firebrick"
                     CornerRadius="10"
-                    HeightRequest="100"
-                    WidthRequest="100"/>
+                    HeightRequest="{mySizes:GlobalConstSize}"
+                    WidthRequest="{mySizes:GlobalConstSize}"/>
             </Grid>
         </VerticalStackLayout>
     </ScrollView>

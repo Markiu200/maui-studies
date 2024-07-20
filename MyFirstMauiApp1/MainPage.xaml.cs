@@ -1,7 +1,13 @@
-﻿namespace MyFirstMauiApp1
+﻿
+namespace MyFirstMauiApp1
 {
     public partial class MainPage : ContentPage
     {
+        // Defining constant in C# file (to be used as "Global Markup Value")
+        // Constants are in PascalCase (by the way).
+        public const double ConstSize = 100;
+        public const double SecondConstSize = 200;
+
         int count = 0;
 
         public MainPage()
@@ -27,4 +33,21 @@
         }
     }
 
+    // For Global Markup Values this is the naming convention "Global<thitThing>Extension, and it must inherit from IMarkupExtension.
+    public class GlobalConstSizeExtension : IMarkupExtension
+    {
+        // You do not need to use "serviceProvider"
+        public object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return MainPage.ConstSize;
+        }
+    }
+    public class GlobalSecondConstSizeExtension : IMarkupExtension
+    {
+        // You do not need to use "serviceProvider"
+        public object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return MainPage.SecondConstSize;
+        }
+    }
 }
