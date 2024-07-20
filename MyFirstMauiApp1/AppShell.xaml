@@ -9,34 +9,37 @@
     FlyoutBackgroundColor="Beige"
     Title="MyFirstMauiApp1">
 
-    <ShellContent
-        Title="TestPage"
-        Icon="dotnet_bot.png"
-        ContentTemplate="{DataTemplate local:TestPage}"
-        Route="TestPage" />
-    <ShellContent
-        Title="MainPage"
-        Icon="bike.png"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-    <ShellContent
-        Title="TestPage2"
-        Icon="dotnet_bot.png"
-        ContentTemplate="{DataTemplate local:TestPage2}"
-        Route="TestPage2" />
-    <ShellContent
-        Title="TestPage3"
-        Icon="bike.png"
-        ContentTemplate="{DataTemplate local:TestPage3}"
-        Route="TestPage3" />
-    <ShellContent
-        Title="TestPage3_CS"
-        Icon="dotnet_bot.png"
-        ContentTemplate="{DataTemplate local:TestPage3_CS}"
-        Route="TestPage3_CS" />
 
+
+    <!-- Tabbed navigation 
+    This represents tabs on the bottom of screen -->
+    <TabBar>
+        <Tab Title="MainPage" Icon="dotnet_bot.png">
+            <ShellContent 
+             Title="111"
+             ContentTemplate="{DataTemplate local:MainPage}"
+             Route="MainPage" />
+        </Tab>
+        <Tab Title="TestPage" Icon="bike.png">
+            <ShellContent 
+             Title="222"
+             ContentTemplate="{DataTemplate local:TestPage}"
+             Route="TestPage" />
+        </Tab>
+        <Tab Title="TestPage2" Icon="dotnet_bot.png">
+             <ShellContent 
+             Title="333"
+             ContentTemplate="{DataTemplate local:TestPage2}"
+             Route="TestPage2" />
+        </Tab>
+    </TabBar>
+    
+    
 </Shell>
 <!-- 
+    .NET Maui Apps | How to create Flyout, Tab Bar and Tabs in Maui Mobile and Desktop applications. 
+    https://www.youtube.com/watch?v=Ru1G3-_G2Qs
+    
     Shell.FlyoutBehavior="Flyout"       - activates "hamburger" menu, from which choosing page will be possible.
     Shell.ForegroundColor="Black"       - changes burger color to black, instead of default white apparently, so it's visible on screen.
     FlyoutBackgroundColor="Beige"       - as name suggests, I put this annotation here to mark it as "I added that to code".
@@ -44,4 +47,6 @@
     Unlike changing page by "await Navigation.PushAsync(new TestPage2());" like in TestPage, here the constructor is not called, 
     so all the saved clicks don't disappear while switching.
     First page that appears is the first page on the list, it doesn't search for "MainPage" or anything.
+    
+    In order to have TabBar, loose ShellContent items needed to be removed.
 -->
