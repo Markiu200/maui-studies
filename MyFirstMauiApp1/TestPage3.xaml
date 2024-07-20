@@ -12,7 +12,8 @@
     <ScrollView>
         <VerticalStackLayout Margin="20, 20, 20, 20"
                              Padding="10, 10, 10, 10"
-                             HeightRequest="500">
+                             HeightRequest="500"
+                             BackgroundColor="{OnPlatform Android=Beige, WinUI=Green, Default=Firebrick}">
             <!-- Alternative for configuring element. Make element not self-closing and nest it's properties as separate items -->
             <Label 
                 VerticalOptions="Center" 
