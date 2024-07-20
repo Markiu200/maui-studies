@@ -5,8 +5,8 @@ public class TestPage3_CS : ContentPage
 	public TestPage3_CS()
 	{
         var scrollView = new ScrollView();
-        // It seems that unlike in XAML, here you set all four margins at once, not individual ones.
-        var stacklayout = new VerticalStackLayout { Margin = 20, Padding = 10, HeightRequest = 500 };
+        // UPDATE: Turns out you can set it as "Thickness", just like so:
+        var stacklayout = new VerticalStackLayout { Margin = new Thickness(20, 20, 20, 20), Padding = 10, HeightRequest = 500 };
         scrollView.Content = stacklayout;
 
         Grid grid = new Grid
