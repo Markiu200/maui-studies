@@ -3,7 +3,7 @@
 
 ### Own ignores ###
 /location.txt
-**/Resources/
+*/Resources/Images/*
 
 ### Csharp ###
 ## Ignore Visual Studio temporary files, build results, and
