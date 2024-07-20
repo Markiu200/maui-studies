@@ -4,63 +4,49 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MyFirstMauiApp1"
-    Shell.FlyoutBehavior="Flyout"
-    Shell.ForegroundColor="Black"
-    FlyoutBackgroundColor="Beige"
+    Shell.FlyoutBehavior="Disabled"
     Title="MyFirstMauiApp1">
 
-    <Shell.FlyoutHeader>
-        <VerticalStackLayout>
-            <Image Source="bike.png"></Image>
-            <Label Text="Flyout bit!" HorizontalTextAlignment="Center"></Label>
-        </VerticalStackLayout>
-    </Shell.FlyoutHeader>
-
-    <!-- ItemTemplate allows for adjusting how should flyout items look like -->
-    <Shell.ItemTemplate>
-        <DataTemplate>
-            <Grid ColumnDefinitions="*,30">
-                <Label Text="{Binding Title}" VerticalOptions="Center" Padding="30,20"></Label>
-                    <!-- YT guy user "LayoutIcon", however it works with Icon too, 
-                    and if I imagine what "Binding" does right, it should be the proper way to go-->
-                <Image Source="{Binding Icon}" HeightRequest="50" HorizontalOptions="End"></Image>
-            </Grid>
-        </DataTemplate>
-    </Shell.ItemTemplate>
-
-    <!-- <FlyoutItem FlyoutDisplayOptions="AsMultipleItems"> -->
-    <ShellContent
-        Title="TestPage"
-        Icon="dotnet_bot.png"
-        ContentTemplate="{DataTemplate local:TestPage}"
-        Route="TestPage" />
-    <ShellContent
-        Title="MainPage"
-        Icon="bike.png"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-    <ShellContent
-        Title="TestPage2"
-        Icon="dotnet_bot.png"
-        ContentTemplate="{DataTemplate local:TestPage2}"
-        Route="TestPage2" />
-    <ShellContent
-        Title="TestPage3"
-        Icon="bike.png"
-        ContentTemplate="{DataTemplate local:TestPage3}"
-        Route="TestPage3" />
-    <ShellContent
-        Title="TestPage3_CS"
-        Icon="dotnet_bot.png"
-        ContentTemplate="{DataTemplate local:TestPage3_CS}"
-        Route="TestPage3_CS" />
-    <!--</FlyoutItem> -->
-    
-    <Shell.FlyoutFooter>
-        <VerticalStackLayout>
-            <Image Source="dotnet_bot.png"></Image>
-        </VerticalStackLayout>
-    </Shell.FlyoutFooter>
+    <!-- TabBar contains all tab related settings -->
+    <TabBar>
+        <!-- Tab represents buttons on the bottom -->
+        <Tab Title="First two pages" Icon="dotnet_bot.png">
+            <!-- Elements inside Tab, if more than one, will appear on upper bar of the screen 
+            https://learn.microsoft.com/en-us/answers/questions/1025367/net-maui-is-there-a-way-to-hide-the-navigation-bar
+            If displaying current tab's title is not needed, it can be turned set this on content page:
+            Shell.NavBarIsVisible="false"
+            //
+            "topbar" will not appear if flyout is not disabled.
+            -->
+            <ShellContent
+                Title="MainPage"
+                Icon="dotnet_bot.png"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+            <ShellContent
+                Title="TestPage"
+                Icon="bike.png"
+                ContentTemplate="{DataTemplate local:TestPage}"
+                Route="TestPage" />
+        </Tab>
+        <Tab Title="Last three pages" Icon="bike.png">
+            <ShellContent
+                Title="TestPage2"
+                Icon="dotnet_bot.png"
+                ContentTemplate="{DataTemplate local:TestPage2}"
+                Route="TestPage2" />
+            <ShellContent
+                Title="TestPage3"
+                Icon="bike.png"
+                ContentTemplate="{DataTemplate local:TestPage3}"
+                Route="TestPage3" />
+            <ShellContent
+                Title="TestPage3_CS"
+                Icon="dotnet_bot.png"
+                ContentTemplate="{DataTemplate local:TestPage3_CS}"
+                Route="TestPage3_CS" />
+        </Tab>
+    </TabBar>
 
 </Shell>
 <!-- 
