@@ -10,23 +10,28 @@
     Title="MyFirstMauiApp1">
 
     <ShellContent
-        Title="MainPage"
+        Title="TestPage"
+        Icon="dotnet_bot.png"
         ContentTemplate="{DataTemplate local:TestPage}"
         Route="TestPage" />
     <ShellContent
-        Title="TestPage"
+        Title="MainPage"
+        Icon="bike.png"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
     <ShellContent
         Title="TestPage2"
+        Icon="dotnet_bot.png"
         ContentTemplate="{DataTemplate local:TestPage2}"
         Route="TestPage2" />
     <ShellContent
         Title="TestPage3"
+        Icon="bike.png"
         ContentTemplate="{DataTemplate local:TestPage3}"
         Route="TestPage3" />
     <ShellContent
         Title="TestPage3_CS"
+        Icon="dotnet_bot.png"
         ContentTemplate="{DataTemplate local:TestPage3_CS}"
         Route="TestPage3_CS" />
 
