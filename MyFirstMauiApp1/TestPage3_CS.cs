@@ -6,7 +6,14 @@ public class TestPage3_CS : ContentPage
 	{
         var scrollView = new ScrollView();
         // UPDATE: Turns out you can set it as "Thickness", just like so:
-        var stacklayout = new VerticalStackLayout { Margin = new Thickness(20, 20, 20, 20), Padding = 10, HeightRequest = 500 };
+        var stacklayout = new VerticalStackLayout {
+            Margin = new Thickness(20, 20, 20, 20),
+            Padding = 10,
+            HeightRequest = 500,
+            // Platform specific background settings implementation. 
+            // To cover more platforms, "if else" constructions could be used.
+            BackgroundColor = DeviceInfo.Platform == DevicePlatform.Android ? Colors.Beige : Colors.Green
+        };
         scrollView.Content = stacklayout;
 
         Grid grid = new Grid
