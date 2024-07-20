@@ -4,12 +4,39 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MyFirstMauiApp1"
-    Shell.FlyoutBehavior="Disabled"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.ForegroundColor="Black"
+    FlyoutBackgroundColor="Beige"
     Title="MyFirstMauiApp1">
 
     <ShellContent
-        Title="Home"
+        Title="MainPage"
+        ContentTemplate="{DataTemplate local:TestPage}"
+        Route="TestPage" />
+    <ShellContent
+        Title="TestPage"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    <ShellContent
+        Title="TestPage2"
+        ContentTemplate="{DataTemplate local:TestPage2}"
+        Route="TestPage2" />
+    <ShellContent
+        Title="TestPage3"
         ContentTemplate="{DataTemplate local:TestPage3}"
         Route="TestPage3" />
+    <ShellContent
+        Title="TestPage3_CS"
+        ContentTemplate="{DataTemplate local:TestPage3_CS}"
+        Route="TestPage3_CS" />
 
 </Shell>
+<!-- 
+    Shell.FlyoutBehavior="Flyout"       - activates "hamburger" menu, from which choosing page will be possible.
+    Shell.ForegroundColor="Black"       - changes burger color to black, instead of default white apparently, so it's visible on screen.
+    FlyoutBackgroundColor="Beige"       - as name suggests, I put this annotation here to mark it as "I added that to code".
+    
+    Unlike changing page by "await Navigation.PushAsync(new TestPage2());" like in TestPage, here the constructor is not called, 
+    so all the saved clicks don't disappear while switching.
+    First page that appears is the first page on the list, it doesn't search for "MainPage" or anything.
+-->
